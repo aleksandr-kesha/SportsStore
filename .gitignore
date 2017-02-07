@@ -37,18 +37,3 @@ bld/
 # Visual Studio code coverage results
 *.coverage
 *.coveragexml
-
-# Database files
-Source/CMOCompliance.Desktop/CMOCompliance.Desktop.DataAccessLayer/Data/CmoLaptop.sdf
-Source/CMOCompliance.Desktop/CMOCompliance.Desktop.DataAccessLayer/Data/Template.sdf
-
-# Logs
-Source/CMOCompliance.Desktop/UpgradeLog.htm
-
-# Uploaded files
-Source/CMOCompliance.Desktop/CmoCompliance.Desktop.WPFApplication/Upload
-
-# Others
-Source/CMOCompliance.Desktop/CmoCompliance.Desktop.WPFApplication/Settings
-Source/CMOCompliance.Desktop/CmoCompliance.Desktop.Setup/CmoCompliance.Desktop.Setup/Express/*
-
