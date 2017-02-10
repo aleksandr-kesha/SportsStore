@@ -1,0 +1,26 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Store.master.cs" Inherits="SportsStore.Pages.Store" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Sports Store</title>
+    <link rel="stylesheet" href="~/Content/Styles.css" />
+</head>
+
+<body>
+    <form id="form1" runat="server">
+        <div id="header">
+            <div class="title">Sports Store</div>
+        </div>
+
+        <div id="categories">
+            We will put something useful here later
+        </div>
+
+        <div>
+            <asp:ContentPlaceHolder ID="bodyContent" runat="server" />
+        </div>
+    </form>
+</body>
+</html>
