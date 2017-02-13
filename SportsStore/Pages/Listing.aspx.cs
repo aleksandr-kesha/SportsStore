@@ -19,15 +19,30 @@ namespace SportsStore.Pages
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+                return;
+
 
         }
 
-        protected IEnumerable<Product> GetProducts()
+        public IEnumerable<Product> GetProducts()
         {
-            return _repository.Products
+            return FilterProducts()
                 .OrderBy(p => p.ProductId)
                 .Skip((CurrentPage - 1)*_pageSize)
                 .Take(_pageSize);
+        }
+
+        private IEnumerable<Product> FilterProducts()
+        {
+            var products = _repository.Products;
+
+            var category = (string) RouteData.Values["category"] ?? Request.QueryString["category"];
+
+            return !string.IsNullOrWhiteSpace(category)
+                ? products.Where(
+                    p => string.Compare(p.Category, category, StringComparison.CurrentCultureIgnoreCase) == 0)
+                : products;
         }
 
         protected int CurrentPage
@@ -48,6 +63,6 @@ namespace SportsStore.Pages
             return !string.IsNullOrEmpty(reqValue) && int.TryParse(reqValue, out page) ? page : 1;
         }
 
-        protected int MaxPage => (int) Math.Ceiling((decimal) _repository.Products.Count()/_pageSize);
+        protected int MaxPage => (int) Math.Ceiling((decimal) FilterProducts().Count()/_pageSize);
     }
 }

@@ -29,11 +29,14 @@ namespace SportsStore.Controls
 
         protected string CreateLinkHtml(string category)
         {
+            var selectdCategory = (string)Page.RouteData.Values["category"] ?? Request.QueryString["category"];
+
             var path =
                 RouteTable.Routes.GetVirtualPath(null, null,
-                    new RouteValueDictionary() {{"category", category}, {"page", "1"}})?.VirtualPath;
+                    new RouteValueDictionary {{"category", category}, {"page", "1"}})?.VirtualPath;
 
-            return $"<a href='{path}'>{category}</a>";
+            return
+                $"<a href='{path}' {(string.Compare(category, selectdCategory, StringComparison.CurrentCultureIgnoreCase) == 0 ? "class='selected'" : "")}>{category}</a>";
         }
     }
 }
