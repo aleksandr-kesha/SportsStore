@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web.Routing;
 using SportsStore.Models;
 using SportsStore.Models.Repository;
+using SportsStore.Pages.Helpers;
 
 namespace SportsStore.Pages
 {
@@ -22,7 +24,22 @@ namespace SportsStore.Pages
             if (!IsPostBack)
                 return;
 
+            int selectedProductId;
 
+            if (!int.TryParse(Request.Form["add"], out selectedProductId))
+                return;
+
+            var selectedProduct = _repository.Products.FirstOrDefault(p => p.ProductId == selectedProductId);
+
+            if (selectedProduct != null)
+            {
+                SessionHelper.GetCart(Session).AddItem(selectedProduct,1);
+                SessionHelper.Set(Session, SessionKey.RETURN_URL, Request.RawUrl);
+                // ReSharper disable once PossibleNullReferenceException
+                
+                //var path = RouteTable.Routes.GetVirtualPath(null, "cart", null).VirtualPath;
+                //Response.Redirect(path);
+            }
         }
 
         public IEnumerable<Product> GetProducts()

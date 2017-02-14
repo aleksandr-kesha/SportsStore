@@ -11,8 +11,13 @@ namespace SportsStore.Models
 
         public void AddItem(Product product, int quantity)
         {
-            var line = _lineCollection.FirstOrDefault(p => p.Product.ProductId == product.ProductId) ??
-                       new CartLine {Product = product};
+            var line = _lineCollection.FirstOrDefault(p => p.Product.ProductId == product.ProductId);
+
+            if (line == null)
+            {
+                line = new CartLine { Product = product };
+                _lineCollection.Add(line);
+            }
 
             line.Quantity++;
         }
@@ -30,5 +35,7 @@ namespace SportsStore.Models
     {
         public Product Product { get; set; }
         public int Quantity { get; set; }
+
+        public decimal Total => Quantity*Product.Price;
     }
 }
