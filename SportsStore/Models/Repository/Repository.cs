@@ -18,8 +18,10 @@ namespace SportsStore.Models.Repository
             {
                 order = _context.Orders.Add(order);
 
-                foreach(var line in order.OrderLines)
+                foreach (var line in order.OrderLines)
+                {
                     _context.Entry(line.Product).State = EntityState.Modified;
+                }
             }
             else
             {

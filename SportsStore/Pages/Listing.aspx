@@ -13,16 +13,6 @@
                 </div>
             </ItemTemplate>
         </asp:Repeater>
-
-<%--        <% foreach (var product in GetProducts())
-            {
-                Response.Write("<div class='item'>");
-                Response.Write($"<h3>{product.Name}</h3>");
-                Response.Write(product.Description);
-                Response.Write($"<h4>{product.Price.ToString("c")}</h4>");
-                Response.Write($"<button type='submit', name='add' value='{product.ProductId}'>Add to cart</button>");
-                Response.Write("</div>");
-            } %>--%>
     </div>
 
     <div class="pager">

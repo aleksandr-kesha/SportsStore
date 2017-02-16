@@ -36,7 +36,7 @@ namespace SportsStore.Pages
                 SessionHelper.GetCart(Session).AddItem(selectedProduct,1);
                 SessionHelper.Set(Session, SessionKey.RETURN_URL, Request.RawUrl);
                 // ReSharper disable once PossibleNullReferenceException
-                
+
                 //var path = RouteTable.Routes.GetVirtualPath(null, "cart", null).VirtualPath;
                 //Response.Redirect(path);
             }

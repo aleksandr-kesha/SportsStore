@@ -4,6 +4,7 @@ using System.Linq;
 using SportsStore.Models;
 using SportsStore.Models.Repository;
 using SportsStore.Pages.Helpers;
+using System.Web.Routing;
 
 namespace SportsStore.Pages
 {
@@ -13,6 +14,8 @@ namespace SportsStore.Pages
 
         protected void Page_Load(object sender, EventArgs e)
         {
+           // CheckoutUrlLink.HRef = CheckoutUrl;
+
             if (!IsPostBack)
                 return;
 
@@ -33,5 +36,8 @@ namespace SportsStore.Pages
         public decimal CartTotal => SessionHelper.GetCart(Session).ComputeTotalValue();
 
         public string ReturnUrl => SessionHelper.Get<string>(Session, SessionKey.RETURN_URL);
+
+        public string CheckoutUrl => RouteTable.Routes.GetVirtualPath(null, "checkout", null)?.VirtualPath;
+
     }
 }
