@@ -8,6 +8,7 @@
 <head runat="server">
     <title>Sports Store</title>
     <link rel="stylesheet" href="~/Content/Styles.css" />
+    <%: System.Web.Optimization.Scripts.Render("~/bundles/validation") %>
 </head>
 
 <body>

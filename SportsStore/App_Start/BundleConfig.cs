@@ -1,0 +1,17 @@
+﻿using System.Web.Optimization;
+
+namespace SportsStore
+{
+    public class BundleConfig
+    {
+        public static void RegisterBundle(BundleCollection bundles)
+        {
+            bundles.Add(new ScriptBundle("~/bundles/validation").Include
+                (
+                    "~/Scripts/jquery-{version}.js",
+                    "~/Scripts/jquery.validate.js",
+                    "~/Scripts/jquery.validate.unobtrusive.js"
+                ));
+        }
+    }
+}
